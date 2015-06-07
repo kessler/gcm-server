@@ -1,0 +1,30 @@
+{
+  "name": "gcm-server",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -R spec"
+  },
+  "dependencies": {
+    "body-parser": "^1.12.2",
+    "express": "^4.12.3",
+    "leveldown": "^0.10.4",
+    "levelup": "^0.19.0",
+    "lodash": "^3.6.0",
+    "node-gcm": "^0.9.15",
+    "node-uuid": "^1.4.3",
+    "rc": "^1.0.0",
+    "validator": "^3.35.0"
+  },
+  "author": "Yaniv Kessler",
+  "bugs": {
+    "url": "https://github.com/kessler/gcm-server/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kessler/gcm-server"
+  },
+  "homepage": "https://github.com/kessler/gcm-server",
+  "license": "MIT"
+}
