@@ -9,9 +9,10 @@ var gcm = require('./gcm')
 var config = require('./config.js')
 var routes = require('./routes.js')
 
-
 var app = express()
 
+
+app.use('/healthprobe', routes.healthprobe())
 app.use('/api/*', bodyParser.json())
 
 app.use('/api/send', routes.validate(validator, false))

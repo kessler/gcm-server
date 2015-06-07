@@ -84,3 +84,9 @@ module.exports.send = function (db, gcm) {
 		}
 	}
 }
+
+module.exports.healthprobe = function () {
+	return function (req, res, next) {
+		res.end()
+	}
+}
