@@ -22,6 +22,9 @@ app.use('/api/send', routes.send(db, gcm))
 app.use('/api/register', routes.validate(validator, true))
 app.use('/api/register', routes.register(db))
 
+app.use('/api/deregister', routes.validate(validator, true))
+app.use('/api/deregister', routes.deregister(db))
+
 app.listen(config.httpPort, function (err) {
 	if (err) return console.error(err)
 

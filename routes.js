@@ -36,9 +36,13 @@ module.exports.register = function (db) {
 	return function (req, res, next) {
 		console.log('registering %s / %s', req.handle, req.key)
 
+		if (req.key) req.key = req.key.trim()
+
 		db.get(req.handle, function (err, registration) {
+
 			if (err || registration.key === req.key) {
-				var key = uuid();
+				var key = uuid()
+
 				db.put(req.handle, { regId: req.regId, key: key }, function (err) {
 					if (err) return next(err)
 
@@ -50,6 +54,33 @@ module.exports.register = function (db) {
 		})
 	}
 }
+
+/*
+ * 	GET/PUT/POST 
+ *	handle, regid
+ */
+module.exports.deregister = function (db) {
+	return function (req, res, next) {
+		console.log('deregistering %s / %s', req.handle, req.key)
+
+		if (req.key) req.key = req.key.trim()
+
+		db.get(req.handle, function (err, registration) {
+			if (err) return next(new Error('cannot deregister'))
+
+			if (registration && registration.key === req.key) {
+				db.del(req.handle, function (err) {
+					if (err) return next(err)
+
+					res.end()
+				})
+			} else {
+				return next(new Error('cannot deregister'))
+			}
+		})
+	}
+}
+
 
 /*
  * 	GET/PUT/POST 
@@ -70,8 +101,6 @@ module.exports.send = function (db, gcm) {
 
 		db.get(req.handle, function (err, data) {
 			if (err) return next(err)
-			console.log(data)
-
 			push(data.regId)
 		})
 

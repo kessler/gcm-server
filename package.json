@@ -15,6 +15,7 @@
     "node-gcm": "^0.9.15",
     "node-uuid": "^1.4.3",
     "rc": "^1.0.0",
+    "serve-static": "^1.9.3",
     "validator": "^3.35.0"
   },
   "author": "Yaniv Kessler",
