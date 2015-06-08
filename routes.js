@@ -57,7 +57,7 @@ module.exports.register = function (db) {
  */
 module.exports.send = function (db, gcm) {
 	return function (req, res, next) {
-		var message = { message: req.query.m || req.body.m }
+		var message = { message: req.query.m || req.body.m, title: req.query.t || req.body.t || '' }
 
 		// just sent to this regid
 		var regid = req.regId
