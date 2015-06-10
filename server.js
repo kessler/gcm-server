@@ -3,14 +3,13 @@ var bodyParser = require('body-parser')
 var _ = require('lodash')
 var validator = require('validator')
 
-var db = require('./db')
-var gcm = require('./gcm')
-
+var db = require('./db.js')
+var gcm = require('./gcm.js')
+var multilevel = require('./multilevel.js')
 var config = require('./config.js')
 var routes = require('./routes.js')
 
 var app = express()
-
 
 app.use('/healthprobe', routes.healthprobe())
 app.use('/api/*', bodyParser.json())

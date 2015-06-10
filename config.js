@@ -2,6 +2,7 @@ var rc = require('rc')
 
 module.exports = rc('gcm-server', {
 	httpPort: 3000,
+	multilevelPort: 9000,
 	gcm: {
 		key: '',
 
