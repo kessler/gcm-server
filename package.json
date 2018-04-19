@@ -10,15 +10,16 @@
     "body-parser": "^1.12.2",
     "debug": "^3.1.0",
     "express": "^4.12.3",
-    "leveldown": "^3.0.0",
-    "levelup": "^2.0.2",
+    "level": "^3.0.0",
     "lodash": "^3.6.0",
     "multilevel": "^6.1.0",
     "node-gcm": "^0.14.10",
     "node-uuid": "^1.4.3",
+    "pump": "^3.0.0",
     "rc": "^1.0.0",
     "serve-static": "^1.9.3",
-    "validator": "^3.35.0"
+    "validator": "^3.35.0",
+    "yalla": "^1.0.1"
   },
   "author": "Yaniv Kessler",
   "bugs": {

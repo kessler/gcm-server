@@ -1,5 +1,5 @@
-var levelup = require('levelup')
-var leveldown = require('leveldown')
-var db = levelup(leveldown('db'), { valueEncoding: 'json' })
+var config = require('./config')
+var level = require('level')
+var db = level(config.db, { valueEncoding: 'json' })
 
 module.exports = db

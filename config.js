@@ -1,6 +1,8 @@
 var rc = require('rc')
 
 module.exports = rc('gcm-server', {
+	db: 'db',
+	logLevel: 'info',
 	httpPort: 3000,
 	multilevelPort: 9000,
 	gcm: {

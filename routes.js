@@ -1,4 +1,5 @@
-var uuid = require('node-uuid')
+const uuid = require('node-uuid')
+const log = require('./log')('gcm-web-routes')
 
 module.exports.validate = function (validator, regIdRequired) {
 	return function (req, res, next) {
@@ -34,7 +35,7 @@ module.exports.validate = function (validator, regIdRequired) {
  */
 module.exports.register = function (db) {
 	return function (req, res, next) {
-		console.log('registering %s / %s', req.handle, req.key)
+		log.info('registering %s / %s', req.handle, req.key)
 
 		if (req.key) req.key = req.key.trim()
 
@@ -61,7 +62,7 @@ module.exports.register = function (db) {
  */
 module.exports.deregister = function (db) {
 	return function (req, res, next) {
-		console.log('deregistering %s / %s', req.handle, req.key)
+		log.info('deregistering %s / %s', req.handle, req.key)
 
 		if (req.key) req.key = req.key.trim()
 
@@ -105,9 +106,16 @@ module.exports.send = function (db, gcm) {
 		})
 
 		function push (regId) {
+			if (!regId) {
+				return next(new Error('missing regId'))
+			}
+
+			log.info(`pushing message ${JSON.stringify(message)}`)
+			log.info(`regid: ${regId}`)
+			
 			gcm.push(message, [regId], function (err, result) {
 				if (err) return next(err)
-
+				log.info(`message pushed: ${JSON.stringify(result)}`)
 				res.json(result)
 			})
 		}

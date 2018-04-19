@@ -1,3 +1,4 @@
+const log = require('./log')('gcm-web-app')
 var express = require('express')
 var bodyParser = require('body-parser')
 var _ = require('lodash')
@@ -27,5 +28,5 @@ app.use('/api/deregister', routes.deregister(db))
 app.listen(config.httpPort, function (err) {
 	if (err) return console.error(err)
 
-	console.log('lisening on port %d', config.httpPort)
+	log.info('lisening on port %d', config.httpPort)
 })
